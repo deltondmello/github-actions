@@ -1,9 +1,7 @@
 name: Dev Deploy
 
 on:
-  workflow_dispatch:  # This makes it manually triggerable from the GitHub UI
-    branches:
-      - '*'
+  workflow_dispatch:
 
 jobs:
   dev-deploy:
@@ -23,4 +21,4 @@ jobs:
         deploy_type: [web, worker]  # This will run two jobs in parallel
     steps:
       - name: Trigger Deploy for Web/Worker
-        run: echo "this is working"
+        run: echo "this is working ${{ matrix.deploy_type }}" 

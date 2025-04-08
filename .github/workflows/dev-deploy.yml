@@ -1,0 +1,26 @@
+name: Dev Deploy
+
+on:
+  workflow_dispatch:  # This makes it manually triggerable from the GitHub UI
+    branches:
+      - '*'
+
+jobs:
+  dev-deploy:
+    name: Deploy to Development (Bitbucket Trigger)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Bitbucket Pipeline
+        run: echo "this is working"
+
+
+  parallel_deploy:
+    needs: dev-deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deploy_type: [web, worker]  # This will run two jobs in parallel
+    steps:
+      - name: Trigger Deploy for Web/Worker
+        run: echo "this is working"

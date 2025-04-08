@@ -1,0 +1,26 @@
+name: Python CI
+
+on: [push]
+
+jobs:
+  tests:
+    name: Pytest Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: show
+        run: echo this working
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: show
+        run: echo this working
